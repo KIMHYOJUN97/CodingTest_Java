@@ -1,1 +1,6 @@
-로프_2217_시간초과.java
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+!/baekjoon/로프_2217_시간초과.java
