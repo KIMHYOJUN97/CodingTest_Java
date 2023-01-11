@@ -21,7 +21,7 @@ public class 주유소_13305 {
             price.add(Long.parseLong(st.nextToken()));
         }
         Long ans = 0L;
-        Long min = 10000L;
+        Long min = Long.MAX_VALUE;
         for(int i=0;i<N-1;i++){
             if(min>price.get(i)){
                 min=price.get(i);
