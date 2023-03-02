@@ -18,7 +18,7 @@ public class S2_2805_나무자르기 {
             trees[i] = Integer.parseInt(st.nextToken());
         }
         Arrays.sort(trees);
-        int ans = 0;
+        long ans = 0;
         int start = 0;
         int end = trees[n-1];
         while (start <= end) {
