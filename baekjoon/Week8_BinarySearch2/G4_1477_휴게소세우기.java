@@ -32,8 +32,8 @@ public class G4_1477_휴게소세우기 {
 
         Arrays.sort(road);
         int start = 1;
-        int end = l-2;
-        int ans = l-2;
+        int end = l-1;
+        int ans = l-1;
         while (start <= end) {
             int mid = (start+end)/2;
             int cnt = search(mid);
@@ -51,8 +51,12 @@ public class G4_1477_휴게소세우기 {
     private static int search(int mid) {
         int cnt = m;
         for (int i = 0; i < n+2; i++) {
-            if(i<n-1){
-                if(road[i+1]-road[i]>mid)cnt -= (road[i+1]-road[i])/mid;
+            if(i<n+1){
+                if(road[i+1]-road[i]>mid){
+                    cnt -= (road[i+1]-road[i])/mid;
+                    //겹치는 부분의 조건을 잘 확인하자
+                    if((road[i+1]-road[i])%mid==0)cnt++;
+                }
             }
         }
         return cnt;
