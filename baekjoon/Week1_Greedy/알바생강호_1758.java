@@ -1,4 +1,4 @@
-package baekjoon;
+package baekjoon.Week1_Greedy;
 import java.util.*;
 import java.io.*;
 
