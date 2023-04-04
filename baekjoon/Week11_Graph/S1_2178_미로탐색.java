@@ -22,6 +22,9 @@ public class S1_2178_미로탐색 {
                 graph[i][j] = Integer.parseInt(String.valueOf(input.charAt(j)));
             }
         }
+        /**
+         * visited까지 넣어놓으면 start의 변수를 없앨 수 있다.
+         */
         Queue<Node> q = new LinkedList<>();
         q.add(new Node(0, 0));
         while (!q.isEmpty()) {
