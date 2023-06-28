@@ -7,7 +7,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-//중복 조합.
+/**
+ *  중복 조합.
+ *  10000000 1
+ *  9
+ *  ->예외 생각하기.
+ */
 public class S5_18511_큰수구성하기_완전탐색 {
     static List<Integer> ans = new ArrayList<>();
     static int n;
@@ -24,6 +29,7 @@ public class S5_18511_큰수구성하기_완전탐색 {
         System.out.println(ans.get(0));
     }
 
+    //k도 필요가 없다.
     static void dfs(String num,int k,String[] numbers,int cnt) {
         if(num != "" && stoi(num)>n){
             return;
