@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Stack;
 
+/**
+ * 시간초과 남.
+ */
 public class G5_11000_강의실배정 {
     /**
      *
