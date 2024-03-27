@@ -78,8 +78,11 @@ public class S1_16926_배열돌리기1 {
 
     static int[][] graph;
     static int n,m,r;
+    static int[] dx = {0, 1, 0, -1};
+    static int[] dy = {1, 0, -1, 0};
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        // 다음엔 StringTokenizer 로 구현하기
         String[] nmr = br.readLine().split(" ");
         n = stoi(nmr[0]);
         m = stoi(nmr[1]);
@@ -92,11 +95,46 @@ public class S1_16926_배열돌리기1 {
             }
         }
 
-        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < r; i++) {
+            rotate();
+        }
 
+        echo();
     }
 
     static void rotate() {
+        int min = Math.min(n, m);
+        for (int i = 0; i < min / 2; i++) {
+            int idx = 0;
+            int tmp = graph[i][i];
+            int x = i, y = i;
+            while (idx < 4) {
+                int nx = x + dx[idx];
+                int ny = y + dy[idx];
+
+                if (nx >= i && ny >= i && nx < m - i && ny < n - i) {
+                    int swap = tmp;
+                    tmp = graph[ny][nx];
+                    graph[ny][nx] = swap;
+
+                    x = nx;
+                    y = ny;
+                }else idx++;
+            }
+            graph[i+1][i] = tmp;
+        }
+    }
+
+    static void echo() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                sb.append(graph[i][j] + " ");
+            }
+            sb.append("\n");
+        }
+
+        System.out.println(sb);
     }
 
     static int stoi(String s) {
