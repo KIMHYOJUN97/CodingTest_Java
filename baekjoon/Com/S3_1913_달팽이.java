@@ -29,7 +29,6 @@ public class S3_1913_달팽이 {
         int idx = 0;
         while (num <= n * n) {
             graph[y][x] = num;
-            if (num == target) answer = new int[]{x, y};
             int ny = y + dy[idx];
             int nx = x + dx[idx];
             // 정상일 때
@@ -50,18 +49,20 @@ public class S3_1913_달팽이 {
             }
         }
         echo();
-        StringBuilder sb = new StringBuilder();
-        sb.append(answer[0]).append(" ").append(answer[1]);
     }
 
     static void echo() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
+                if(graph[i][j] == target) {
+                    answer = new int[]{j + 1, i + 1};
+                }
                 sb.append(graph[i][j]).append(" ");
             }
-            sb.append("\n");
+            if(i <n-1)sb.append("\n");
         }
         System.out.println(sb.toString());
+        System.out.println((answer[1]) + " " + (answer[0]));
     }
 }
