@@ -38,79 +38,85 @@ import java.util.Set;
  * <p>
  * 0
  * <p>
-9 8
-antabtica
-antaxtica
-antadtica
-antaetica
-antaftica
-antagtica
-antahtica
-antajtica
-antaktica
+ * 9 8
+ * antabtica
+ * antaxtica
+ * antadtica
+ * antaetica
+ * antaftica
+ * antagtica
+ * antahtica
+ * antajtica
+ * antaktica
  * <p>
  * 3
  */
 public class G4_1062_가르침 {
+    static int ans = 0, k;
+    static boolean[] visit = new boolean[26];
     static List<String> list = new ArrayList<>();
-    static Character[] alpha;
-    static Set<Character> set = new HashSet<>();
-    static int ans = 0;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String[] input = br.readLine().split(" ");
-        int n = Integer.parseInt(input[0]);
-        int k = Integer.parseInt(input[1]);
-        List<String> strings = new ArrayList<>();
+        String[] s = br.readLine().split(" ");
+        int n = stoi(s[0]);
+        k = stoi(s[1]);
 
-        for (int i = 0; i < n; i++) {
-            String str = br.readLine();
-            for (int j = 0; j < str.length(); j++) {
-                set.add(str.charAt(j));
-            }
-            strings.add(str);
-        }
-
-        alpha = set.toArray(new Character[0]);
-        char[] result = new char[k];
-        combi(k, 0, 0, result);
-        for (String s : list) {
-            int cnt = 0;
-            for (String str : strings) {
-                String[] split = str.split("");
-                boolean flag = false;
-                for (String s1 : split) {
-                    if (!s.contains(s1)) {
-                        flag = true;
-                        break;
-                    }
-                }
-                if (!flag) cnt++;
-            }
-            ans = Math.max(ans, cnt);
-        }
-
-        System.out.println(ans);
-    }
-
-    static void dfs(int idx) {
-
-    }
-
-    static void combi(int r, int cnt, int start, char[] result) {
-        if (cnt == r) {
-            String s = "";
-            for (char c : result) {
-                s += c;
-            }
-            list.add(s);
+        if (k == 26) {
+            System.out.println(n);
+            return;
+        } else if (k < 5) {
+            System.out.println(0);
             return;
         }
 
-        for (int i = start; i < set.size(); i++) {
-            result[cnt] = alpha[i];
-            combi(r, cnt + 1, i + 1, result);
+        visit['a' - 'a'] = true;
+        visit['c' - 'a'] = true;
+        visit['n' - 'a'] = true;
+        visit['t' - 'a'] = true;
+        visit['i' - 'a'] = true;
+
+        for (int i = 0; i < n; i++) {
+            String str = br.readLine();
+            str.replace("anta", "");
+            str.replace("tica", "");
+            list.add(str);
+        }
+
+        dfs(0, 0);
+        System.out.println(ans);
+    }
+
+    static void dfs(int idx, int len) {
+        if (len == k - 5) {
+            int cnt = 0;
+            for (String s : list) {
+                boolean flag = true;
+                for (int i = 0; i < s.length(); i++) {
+                    if (!visit[s.charAt(i) - 'a']) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    cnt++;
+                }
+            }
+            ans = Math.max(ans, cnt);
+            return;
+        }
+
+        for (int i = idx; i < 26; i++) {
+            if (!visit[i]) {
+                visit[i] = true;
+                dfs(i + 1, len + 1);
+                visit[i] = false;
+            }
         }
     }
+
+    static int stoi(String s) {
+        return Integer.parseInt(s);
+    }
+
 }
