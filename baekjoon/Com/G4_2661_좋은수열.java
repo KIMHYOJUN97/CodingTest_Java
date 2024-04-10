@@ -36,7 +36,7 @@ public class G4_2661_좋은수열 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         n = Integer.parseInt(br.readLine());
-        dfs(0, 0, 0);
+        dfs(1, 1, 0);
         System.out.println(ans);
     }
 
@@ -54,17 +54,31 @@ public class G4_2661_좋은수열 {
     }
 
     static boolean check(int num, int idx) {
-        String str1 = "";
-        String str2 = "";
-        for (int i = 0; i < idx / 2; i++) {
-            str1 += String.valueOf(num).charAt(i);
+        String s = String.valueOf(num);
+        if (divideconquer(s)) {
+            return false;
         }
 
-        for (int i = idx / 2; i < idx; i++) {
-            str2 += String.valueOf(num).charAt(i);
+        return true;
+    }
+
+    static boolean divideconquer(String num) {
+        int length = num.length();
+        if (length == 1) {
+            return true;
         }
 
-        if (str1.equals(str2)) return true;
-        else return false;
+        String s1 = "";
+        String s2 = "";
+        for (int i = 0; i < length / 2; i++) {
+            s1 += num.charAt(i);
+        }
+
+        for (int i = length / 2; i < num.length(); i++) {
+            s2 += num.charAt(i);
+        }
+
+        if (s1.equals(s2)) return false;
+        else return divideconquer(s1) && divideconquer(s2);
     }
 }
