@@ -31,20 +31,18 @@ import java.io.InputStreamReader;
  */
 public class G4_2661_좋은수열 {
     static int n;
-    static long ans = Long.MAX_VALUE;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         n = Integer.parseInt(br.readLine());
         dfs(1, 1, 0);
-        System.out.println(ans);
     }
 
-    static void dfs(int num, int idx, int plus) {
+    static void dfs(long num, int idx, int plus) {
         if (check(num, idx)) return;
         if (idx == n) {
-            ans = Math.min(ans, num);
-            return;
+            System.out.println(num);
+            System.exit(0);
         }
 
         for (int i = 1; i <= 3; i++) {
@@ -53,7 +51,7 @@ public class G4_2661_좋은수열 {
         }
     }
 
-    static boolean check(int num, int idx) {
+    static boolean check(long num, int idx) {
         String s = String.valueOf(num);
         if (divideconquer(s)) {
             return false;
