@@ -3,6 +3,7 @@ package baekjoon.Com;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Stack;
 
 
 /**
@@ -36,6 +37,26 @@ public class G2_2812_크게만들기 {
             arr[i] = stoi(str[i]);
         }
 
+        Stack<Integer> st = new Stack<>();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            while (!st.isEmpty() && k > 0 && st.peek() < arr[i]) {
+                st.pop();
+                k--;
+            }
+            st.push(arr[i]);
+        }
+
+        int length = st.size();
+        while (length > n - k) {
+            st.pop();
+        }
+
+        for (int i = 0; i < length; i++) {
+            sb.append(st.pop());
+        }
+
+        System.out.println(sb.reverse().toString());
     }
 
     static int stoi(String s) {
