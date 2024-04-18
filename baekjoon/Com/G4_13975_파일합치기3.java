@@ -3,6 +3,7 @@ package baekjoon.Com;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.PriorityQueue;
 
 /**
  * 소설가인 김대전은 소설을 여러 장(chapter)으로 나누어 쓰는데, 각 장은 각각 다른 파일에 저장하곤 한다.
@@ -42,7 +43,24 @@ import java.io.InputStreamReader;
 public class G4_13975_파일합치기3 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int T = stoi(br.readLine());
+        for (int t = 0; t < T; t++) {
+            PriorityQueue<Integer> pq = new PriorityQueue<>();
+            int n = stoi(br.readLine());
+            int answer = 0;
+            String[] s = br.readLine().split(" ");
+            for (int i = 0; i < n; i++) {
+                pq.add(stoi(s[i]));
+            }
 
+            while (pq.size() > 1) {
+                int a = pq.poll();
+                int b = pq.poll();
+                answer += (a + b);
+                pq.add(a + b);
+            }
+            System.out.println(answer);
+        }
     }
 
     static int stoi(String s) {
