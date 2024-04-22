@@ -26,6 +26,8 @@ public class S1_2615_오목 {
             }
         }
 
+        System.out.println(0);
+
     }
 
     static boolean check(int x, int y, int[][] board) {
