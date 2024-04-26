@@ -59,7 +59,7 @@ public class G5_1548_부분삼각수열 {
         }
         Arrays.sort(arr);
 
-        int answer = 2;
+        int answer = Math.min(2,n);
         for (int i = 0; i < n-2; i++) {
             for (int j = i + 1; j < n - 1; j++) {
                 for (int k = j + 1; k < n; k++) {
