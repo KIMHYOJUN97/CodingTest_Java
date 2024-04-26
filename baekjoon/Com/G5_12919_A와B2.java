@@ -49,9 +49,8 @@ public class G5_12919_A와B2 {
             if (s.equals(target)) {
                 System.out.println(1);
                 System.exit(0);
-            } else {
-                return;
             }
+            return;
         }
 
         backtracking(s + "A", target);
