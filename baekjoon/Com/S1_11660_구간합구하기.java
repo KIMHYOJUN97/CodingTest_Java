@@ -15,7 +15,7 @@ public class S1_11660_구간합구하기 {
         for (int i = 1; i <= n; i++) {
             s = br.readLine().split(" ");
             for (int j = 1; j <= n; j++) {
-                arr[i][j] = stoi(s[j]);
+                arr[i][j] = stoi(s[j - 1]);
                 preSum[i][j] = preSum[i][j - 1] + preSum[i - 1][j] - preSum[i - 1][j - 1] + arr[i][j];
             }
         }
@@ -27,8 +27,12 @@ public class S1_11660_구간합구하기 {
             int y1 = stoi(s[1]);
             int x2 = stoi(s[2]);
             int y2 = stoi(s[3]);
-
+//            if (x1 == x2 && y1 == y2) sb.append(arr[y1][x1] + "\n");
+//            else
+            sb.append(preSum[y2][x2] - preSum[y2][x1 - 1] - preSum[y1 - 1][x2] + preSum[y1 - 1][x1 - 1] + "\n");
         }
+
+        System.out.println(sb);
     }
 
     static int stoi(String s) {
