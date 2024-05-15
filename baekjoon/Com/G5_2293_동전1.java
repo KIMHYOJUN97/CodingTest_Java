@@ -37,7 +37,7 @@ public class G5_2293_동전1 {
         int k = stoi(s[1]);
 
         int[] dp = new int[k + 1];
-
+        dp[0] = 1;
         int[] arr = new int[n + 1];
         for (int i = 1; i <= n; i++) {
             arr[i] = stoi(br.readLine());
