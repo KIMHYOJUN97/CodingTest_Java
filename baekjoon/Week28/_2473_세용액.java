@@ -7,15 +7,15 @@ import java.util.Arrays;
 
 public class _2473_세용액 {
     static long answer = Long.MAX_VALUE;
-    static int[] ans = new int[3];
+    static long[] ans = new long[3];
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = stoi(br.readLine());
-        int[] arr = new int[n];
+        int n = Integer.parseInt(br.readLine());
+        long[] arr = new long[n];
         String[] s = br.readLine().split(" ");
         for (int i = 0; i < n; i++) {
-            arr[i] = stoi(s[i]);
+            arr[i] = stol(s[i]);
         }
         Arrays.sort(arr);
 
@@ -32,7 +32,7 @@ public class _2473_세용액 {
         System.out.println(sb);
     }
 
-    static void solve(int[] arr, int idx) {
+    static void solve(long[] arr, int idx) {
         int left = idx + 1;
         int right = arr.length - 1;
 
@@ -53,7 +53,7 @@ public class _2473_세용액 {
         }
     }
 
-    static int stoi(String s) {
-        return Integer.parseInt(s);
+    static long stol(String s) {
+        return Long.parseLong(s);
     }
 }
